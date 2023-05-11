@@ -1,17 +1,17 @@
 import './App.css';
 import { Calculator } from './apps/calculator';
 import { User } from './apps/user'; 
+import Welcome from './apps/welcome';
+import Salaries from './apps/Salaries';
 
 function hello(user) {
-  if (user){
-  
+  if (user){  
   return <div>
   <span>{user.name}</span><strong>{user.last_name}</strong> ;
   </div>
   }
   return 'undefined'
   }
-
 
   function App() {
   
@@ -41,45 +41,61 @@ function hello(user) {
   },
   ],
   };
+
   
-  const c=<span>Hello</span>;
-  const name=hello();
+  //let w = new Welcome(user);  
+  //console.log(w)
+
+  //const c=<span>Hello</span>;
+  //const name=hello();
   
   const salaries=user.salaries.map((salary,index)=>{
-  return <tr><td>{index+1}</td><td>{salary.salary}</td><td>{salary.from_date}</td></tr>
+  return <tr><td key={index}>{index+1}</td><td>{salary.salary}</td><td>{salary.from_date}</td></tr>
   });
   
   return (
   <div>
-  <p>A:{a}</p>
-  <p> B:{b}</p>
-  
-  <p>Sum: { a + b} </p>
-  <p>{c}, {name}</p>
-  
-  <Calculator/>
-  <Calculator/> 
-  <Calculator/>
+      {/* <p>A: {a}</p> */}
+      {/* <p>B: {b}</p>    */}
+
+      {/* <p>Sum: {a + b}</p>  */}
+
+      {/* <p>{c}, {name}</p> */}
+
+      {/* <Calculator user={user} a={'text'} b={b}/> */}
+      {/* {<Calculator/>} */}
+      {/* {<Calculator/>} */}
+      {/* {<Calculator/>} */}
 
 
-  <User user={user}/> 
-  
-  <table>
-  <thead>
-  <tr>
-  <th>#</th>
-  <th>Salary</th>
-  <th>Date</th>
-  </tr>
-  </thead>
-  
-  <tbody>
-  {salaries}
-  </tbody>
-  </table>
+  {/* <Welcome user={user} label='red'/> */}
+  <Salaries items={salaries}/>
+
+  {/* <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Salary</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {salaries}
+        </tbody>
+        {/* <tfoot>
+          <tr>
+            <th>#</th>
+            <th>Salary</th>
+            <th>Date</th>
+          </tr>          
+        </tfoot> }
+      </table> */}
+      
+      {<User user={user}/>}
   
   </div>
   );
   }
 
 export default App;
+
